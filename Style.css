@@ -1,0 +1,41 @@
+*{
+    margin:0;
+    padding:0;
+}
+#box{     /*定义一个“容器”用来存放图片*/
+    width:100%;
+    height: 630px;
+    overflow:hidden;
+}
+#box ul li{   /*存放其他图片*/
+    width:100%;
+    height: 630px;
+    list-style-type: none;
+    position:relative;
+}
+#box ul li img{/*飞入飞出的图片的属性设置*/
+    position:absolute;
+    left: -1180px;
+    top: 0px;
+}
+.nav{  /*页面下半部分半透明状态的长条*/
+    width:100%;
+    height: 70px;
+    background:rgba(255,255,255,0.75);
+    position:absolute;
+    left: 0px;
+    bottom: 0px;
+}
+.bar{  /*“进度条”背景*/
+    width:100%;
+    height: 3px;
+    position:absolute;
+    background:url("images/bar.png");
+    bottom: 0px;
+    left: 0px;
+}
+.bar p{   /*“进度条”*/
+    width: 0px;
+    height: 3px;
+    background:#00925f;
+}

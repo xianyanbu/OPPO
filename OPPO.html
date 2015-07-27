@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OPPO手机官网 OPPO智能手机_OPPO最新款手机-OPPO智能手机官方网站</title>
+    <link rel="stylesheet" type="text/css" href="Style.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+        var i=-1; //让图片从背景1加载，如果初始值是0的话，进行i++操作之后就变成1，则图片是从第二张开始加载
+        setTimeout("auto()",0);  //第一次加载时，第一张的图片也会飞出。如果去掉这一句的话，
+        // 第一次执行时，第一张图片时不会有图片飞入和飞出效果的，进度条也不会加载。  使代码能在页面内容稳定后再执行！
+        /**
+         * @函数名：auto()
+         * @功能：实现图片的动态加载和进度条加载
+         * @入口参数：无
+         * @返回值：无
+         */
+        function auto()
+           {
+               i++;
+               if(i>2)
+                   i=0;
+               $("#box ul li").eq(i).fadeIn(100).siblings().fadeOut(100);//eq(i)表示寻找下标为i的li，fadeIn(100)表示100ms的时间内加载完；
+              // siblings()表示寻找与此li同级别的其他li；fadeOut(100)表示100ms的时间内移出
+               $("#box ul li").eq(i).find("img").css("left","-1180px");//修改找到的下标为i的li的css样式为left:-1180px
+               $("#box ul li").eq(i).find("p").css("width","0px");//找到下标为i的li下的p标签，并修改它的css样式为width：0px。
+               // 目的是使进度条刚开始宽度为0，这样后面才会有加载效果
+               if(i==2)
+               {
+                   $("#box ul li").eq(i).find("img").animate({left:"100px"},500,function()
+                   {
+                       $("#box ul li").eq(i).find("p").animate({width:"100%"},3000,function()
+                       {
+                           $("#box ul li").eq(i).find("img").animate({left:"100%"},500);
+                       });
+                   });
+                   //animate(参数，时间，函数（）{}) 可以循环多次嵌套调用
+               }
+               else
+               {
+                   $("#box ul li").eq(i).find("img").animate({left:"0px"},500,function()
+                   {
+                       $("#box ul li").eq(i).find("p").animate({width:"100%"},3000,function()
+                       {
+                           $("#box ul li").eq(i).find("img").animate({left:"100%"},500);
+                       });
+                   });
+               }
+           }
+           setInterval("auto()",4200); //4200ms延时之后执行一次auto()函数
+    </script>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li style="background:url('images/bg1.jpg') center;">
+            <img src="images/con1.png">
+            <div class="nav"></div>
+            <div class="bar"><p></p></div>
+        </li>
+        <li style="background:url('images/bg2.jpg') center;">
+            <img src="images/con2.png">
+            <div class="nav"></div>
+            <div class="bar"><p></p></div>
+        </li>
+        <li style="background:url('images/bg3.jpg') center;">
+            <img src="images/con3.png">
+            <div class="nav"></div>
+            <div class="bar"><p></p></div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
